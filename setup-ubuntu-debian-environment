@@ -42,19 +42,19 @@ log-banner "02a Add Python Repository" "$COMMAND" |& tee -a $CURRLOG 2>&1
 eval $COMMAND |& tee -a $CURRLOG 2>&1
 
 COMMAND="sudo apt-get update"
-log-banner "02b APT Update'" "$COMMAND" |& tee -a $CURRLOG 2>&1
+log-banner "02b APT Update" "$COMMAND" |& tee -a $CURRLOG 2>&1
 eval $COMMAND |& tee -a $CURRLOG 2>&1
 
 COMMAND="sudo apt-get install python3.7"
-log-banner "02c Install Python 3.7'" "$COMMAND" |& tee -a $CURRLOG 2>&1
+log-banner "02c Install Python 3.7" "$COMMAND" |& tee -a $CURRLOG 2>&1
 eval $COMMAND |& tee -a $CURRLOG 2>&1
 
 COMMAND="sudo apt-get install python3.7-dev"
-log-banner "02d Install Python 3.7 Dev'" "$COMMAND" |& tee -a $CURRLOG 2>&1
+log-banner "02d Install Python 3.7 Dev" "$COMMAND" |& tee -a $CURRLOG 2>&1
 eval $COMMAND |& tee -a $CURRLOG 2>&1
 
 COMMAND="sudo apt-get install -y libffi-dev"
-log-banner "02e Install Libffi Dev'" "$COMMAND" |& tee -a $CURRLOG 2>&1
+log-banner "02e Install Libffi Dev" "$COMMAND" |& tee -a $CURRLOG 2>&1
 eval $COMMAND |& tee -a $CURRLOG 2>&1
 
 
