@@ -87,7 +87,7 @@ COMMAND="curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo ap
 log-banner "04b Add Google keys to APT" "$COMMAND" |& tee -a $CURRLOG 2>&1
 eval $COMMAND |& tee -a $CURRLOG 2>&1
 
-COMMAND="echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list"
+COMMAND="echo \"deb https://apt.kubernetes.io/ kubernetes-xenial main\" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list"
 log-banner "04c Some kubectl Stuff" "$COMMAND" |& tee -a $CURRLOG 2>&1
 eval $COMMAND |& tee -a $CURRLOG 2>&1
 
