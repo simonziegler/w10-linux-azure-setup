@@ -1,0 +1,21 @@
+#!/bin/bash
+
+cd $HOME
+SP=$(find "$(pwd -P)" -name w10-linux-azure-setup)
+cd $SP
+PATH=$SP:$PATH
+USER=`whoami`
+
+echo
+echo
+echo
+echo "================================================================================"
+echo "="
+echo "=    Process:    $1"
+echo "=    Command:    $2"
+echo "=    Run at:     "$(date "+%Y-%m-%d %H:%M:%S")
+echo "=    Run by:     $USER"
+echo "="
+echo "================================================================================"
+echo
+echo

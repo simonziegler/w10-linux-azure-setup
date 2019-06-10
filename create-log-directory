@@ -1,0 +1,11 @@
+#!/bin/bash
+
+cd $HOME
+SP=$(find "$(pwd -P)" -name w10-linux-azure-setup)
+cd $SP
+PATH=$SP:$PATH
+BASEPATH=$HOME/logs
+LOGPATH=$BASEPATH/$(date "+%Y-%m-%d--%H-%M-%S--%3N---"$1)
+
+mkdir -p $LOGPATH
+echo $LOGPATH
