@@ -25,7 +25,7 @@ COMMAND="sudo apt-get update"
 /tmp/log-banner "01a Update APT" "$COMMAND" |& tee -a $CURRLOG 2>&1
 eval $COMMAND |& tee -a $CURRLOG 2>&1
 
-COMMAND="sudo apt-get install curl, man, vim git"
+COMMAND="sudo apt-get install curl man vim git"
 /tmp/log-banner "01b Install vim and git" "$COMMAND" |& tee -a $CURRLOG 2>&1
 eval $COMMAND |& tee -a $CURRLOG 2>&1
 
