@@ -1,7 +1,7 @@
 #!/bin/bash
 
-curl -sL https://raw.github.com/simonziegler/w10-linux-azure-setup/blob/master/create-log-directory > /tmp/create-log-directory
-curl -sL https://raw.github.com/simonziegler/w10-linux-azure-setup/blob/master/log-banner > /tmp/log-banner
+curl -sL https://raw.githubusercontent.com/simonziegler/w10-linux-azure-setup/master/create-log-directory > /tmp/create-log-directory
+curl -sL https://raw.githubusercontent.com/simonziegler/w10-linux-azure-setup/master/log-banner > /tmp/log-banner
 chmod 775 /tmp/create-log-directory
 chmod 775 /tmp/log-banner
 
