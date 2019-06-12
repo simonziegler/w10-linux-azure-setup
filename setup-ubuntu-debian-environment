@@ -7,10 +7,6 @@ chmod 775 /tmp/log-banner
 
 DEVENV=$1
 
-cd $HOME
-SP=$(find "$(pwd -P)" -name w10-linux-azure-setup)
-cd $SP
-PATH=$SP:$PATH
 LOGS=$(/tmp/create-log-directory "setup-w10-linux-environment")
 
 read -p "Enter your name (first last): " USERNAME
