@@ -1,12 +1,17 @@
 #!/bin/bash
 
+curl -sL https://raw.github.com/simonziegler/w10-linux-azure-setup/blob/master/create-log-directory > /tmp/create-log-directory
+curl -sL https://raw.github.com/simonziegler/w10-linux-azure-setup/blob/master/log-banner > /tmp/log-banner
+chmod 775 /tmp/create-log-directory
+chmod 775 /tmp/log-banner
+
 DEVENV=$1
 
 cd $HOME
 SP=$(find "$(pwd -P)" -name w10-linux-azure-setup)
 cd $SP
 PATH=$SP:$PATH
-LOGS=$(create-log-directory "setup-w10-linux-environment")
+LOGS=$(/tmp/create-log-directory "setup-w10-linux-environment")
 
 read -p "Enter your name (first last): " USERNAME
 read -p "Enter your email address:     " EMAIL
@@ -21,11 +26,11 @@ read -p "Enter your email address:     " EMAIL
 CURRLOG=$LOGS/01-install-vim-git
 
 COMMAND="sudo apt-get update"
-log-banner "01a Update APT" "$COMMAND" |& tee -a $CURRLOG 2>&1
+/tmp/log-banner "01a Update APT" "$COMMAND" |& tee -a $CURRLOG 2>&1
 eval $COMMAND |& tee -a $CURRLOG 2>&1
 
 COMMAND="sudo apt-get install curl, man, vim git"
-log-banner "01b Install vim and git" "$COMMAND" |& tee -a $CURRLOG 2>&1
+/tmp/log-banner "01b Install vim and git" "$COMMAND" |& tee -a $CURRLOG 2>&1
 eval $COMMAND |& tee -a $CURRLOG 2>&1
 
 echo "colo blue" > ~/.vimrc
@@ -43,23 +48,23 @@ git config --global core.editor "vim"
 CURRLOG=$LOGS/02-install-python-libffi
 
 COMMAND="sudo add-apt-repository ppa:jonathonf/python-3.7"
-log-banner "02a Add Python Repository" "$COMMAND" |& tee -a $CURRLOG 2>&1
+/tmp/log-banner "02a Add Python Repository" "$COMMAND" |& tee -a $CURRLOG 2>&1
 eval $COMMAND |& tee -a $CURRLOG 2>&1
 
 COMMAND="sudo apt-get update"
-log-banner "02b APT Update" "$COMMAND" |& tee -a $CURRLOG 2>&1
+/tmp/log-banner "02b APT Update" "$COMMAND" |& tee -a $CURRLOG 2>&1
 eval $COMMAND |& tee -a $CURRLOG 2>&1
 
 COMMAND="sudo apt-get install python3.7"
-log-banner "02c Install Python 3.7" "$COMMAND" |& tee -a $CURRLOG 2>&1
+/tmp/log-banner "02c Install Python 3.7" "$COMMAND" |& tee -a $CURRLOG 2>&1
 eval $COMMAND |& tee -a $CURRLOG 2>&1
 
 COMMAND="sudo apt-get install python3.7-dev"
-log-banner "02d Install Python 3.7 Dev" "$COMMAND" |& tee -a $CURRLOG 2>&1
+/tmp/log-banner "02d Install Python 3.7 Dev" "$COMMAND" |& tee -a $CURRLOG 2>&1
 eval $COMMAND |& tee -a $CURRLOG 2>&1
 
 COMMAND="sudo apt-get install -y libffi-dev"
-log-banner "02e Install Libffi Dev" "$COMMAND" |& tee -a $CURRLOG 2>&1
+/tmp/log-banner "02e Install Libffi Dev" "$COMMAND" |& tee -a $CURRLOG 2>&1
 eval $COMMAND |& tee -a $CURRLOG 2>&1
 
 
@@ -72,11 +77,11 @@ eval $COMMAND |& tee -a $CURRLOG 2>&1
 CURRLOG=$LOGS/03-install-azure-cli
 
 COMMAND="curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash"
-log-banner "03a Install the Azure CLI" "$COMMAND" |& tee -a $CURRLOG 2>&1
+/tmp/log-banner "03a Install the Azure CLI" "$COMMAND" |& tee -a $CURRLOG 2>&1
 eval $COMMAND |& tee -a $CURRLOG 2>&1
 
 COMMAND="az extension add --name azure-devops"
-log-banner "03v Install the Azure Devops CLI" "$COMMAND" |& tee -a $CURRLOG 2>&1
+/tmp/log-banner "03v Install the Azure Devops CLI" "$COMMAND" |& tee -a $CURRLOG 2>&1
 eval $COMMAND |& tee -a $CURRLOG 2>&1
 
 
@@ -89,29 +94,29 @@ eval $COMMAND |& tee -a $CURRLOG 2>&1
 CURRLOG=$LOGS/04-install-kubectl
 
 COMMAND="sudo apt-get update && sudo apt-get install -y apt-transport-https"
-log-banner "04a Install APT Transport HTTPS" "$COMMAND" |& tee -a $CURRLOG 2>&1
+/tmp/log-banner "04a Install APT Transport HTTPS" "$COMMAND" |& tee -a $CURRLOG 2>&1
 eval $COMMAND |& tee -a $CURRLOG 2>&1
 
 COMMAND="curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -"
-log-banner "04b Add Google keys to APT" "$COMMAND" |& tee -a $CURRLOG 2>&1
+/tmp/log-banner "04b Add Google keys to APT" "$COMMAND" |& tee -a $CURRLOG 2>&1
 eval $COMMAND |& tee -a $CURRLOG 2>&1
 
 COMMAND="echo \"deb https://apt.kubernetes.io/ kubernetes-xenial main\" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list"
-log-banner "04c Some kubectl Stuff" "$COMMAND" |& tee -a $CURRLOG 2>&1
+/tmp/log-banner "04c Some kubectl Stuff" "$COMMAND" |& tee -a $CURRLOG 2>&1
 eval $COMMAND |& tee -a $CURRLOG 2>&1
 
 COMMAND="sudo apt-get update"
-log-banner "04d APT Update" "$COMMAND" |& tee -a $CURRLOG 2>&1
+/tmp/log-banner "04d APT Update" "$COMMAND" |& tee -a $CURRLOG 2>&1
 eval $COMMAND |& tee -a $CURRLOG 2>&1
 
 COMMAND="sudo apt-get install -y kubectl"
-log-banner "04e Install kubectl" "$COMMAND" |& tee -a $CURRLOG 2>&1
+/tmp/log-banner "04e Install kubectl" "$COMMAND" |& tee -a $CURRLOG 2>&1
 eval $COMMAND |& tee -a $CURRLOG 2>&1
 
 COMMAND="curl -L https://git.io/get_helm.sh | sudo bash"
-log-banner "04f Install helm" "$COMMAND" |& tee -a $CURRLOG 2>&1
+/tmp/log-banner "04f Install helm" "$COMMAND" |& tee -a $CURRLOG 2>&1
 eval $COMMAND |& tee -a $CURRLOG 2>&1
 
 COMMAND="helm init --upgrade"
-log-banner "04g Initialize Helm" "$COMMAND" |& tee -a $CURRLOG 2>&1
+/tmp/log-banner "04g Initialize Helm" "$COMMAND" |& tee -a $CURRLOG 2>&1
 eval $COMMAND |& tee -a $CURRLOG 2>&1
