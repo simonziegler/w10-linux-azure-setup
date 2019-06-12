@@ -34,8 +34,8 @@ COMMAND="sudo apt-get install software-properties-common"
 eval $COMMAND |& tee -a $CURRLOG 2>&1
 
 echo "colo blue" > ~/.vimrc
-git config --global user.name $USERNAME
-git config --global user.email $EMAIL
+git config --global user.name "$USERNAME"
+git config --global user.email "$EMAIL"
 git config --global core.editor "vim"
 
 
