@@ -12,7 +12,7 @@ LOGS=$(create-log-directory "setup-w10-linux-environment")
 
 #########################################
 #
-# Install vim and git
+# Install curl, man, vim and git
 #
 #########################################
 
@@ -22,7 +22,7 @@ COMMAND="sudo apt-get update"
 log-banner "01a Update APT" "$COMMAND" |& tee -a $CURRLOG 2>&1
 eval $COMMAND |& tee -a $CURRLOG 2>&1
 
-COMMAND="sudo apt-get install vim git"
+COMMAND="sudo apt-get install curl, man, vim git"
 log-banner "01b Install vim and git" "$COMMAND" |& tee -a $CURRLOG 2>&1
 eval $COMMAND |& tee -a $CURRLOG 2>&1
 
