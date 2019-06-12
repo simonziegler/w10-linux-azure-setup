@@ -1,4 +1,4 @@
 #!/bin/bash
 
 read -p "your name: " USERNAME
-echo $USERNAME
+echo "Hello, >" $USERNAME "<"
