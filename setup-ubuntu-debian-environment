@@ -8,6 +8,8 @@ cd $SP
 PATH=$SP:$PATH
 LOGS=$(create-log-directory "setup-w10-linux-environment")
 
+read -p "Enter your name (first last): " USERNAME
+read -p "Enter your email address:     " EMAIL
 
 
 #########################################
@@ -27,6 +29,9 @@ log-banner "01b Install vim and git" "$COMMAND" |& tee -a $CURRLOG 2>&1
 eval $COMMAND |& tee -a $CURRLOG 2>&1
 
 echo "colo blue" > ~/.vimrc
+git config --global user.name $USERNAME
+git config --global user.email $EMAIL
+git config --global core.editor "vim"
 
 
 #########################################
