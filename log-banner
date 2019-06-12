@@ -1,10 +1,5 @@
 #!/bin/bash
 
-cd $HOME
-SP=$(find "$(pwd -P)" -name w10-linux-azure-setup)
-cd $SP
-PATH=$SP:$PATH
-
 echo
 echo
 echo
