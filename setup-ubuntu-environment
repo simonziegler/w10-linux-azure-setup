@@ -29,6 +29,10 @@ COMMAND="sudo apt-get install curl man vim git"
 /tmp/log-banner "01b Install vim and git" "$COMMAND" |& tee -a $CURRLOG 2>&1
 eval $COMMAND |& tee -a $CURRLOG 2>&1
 
+COMMAND="sudo apt-get install software-properties-common"
+/tmp/log-banner "01c Install APT Software Properties" "$COMMAND" |& tee -a $CURRLOG 2>&1
+eval $COMMAND |& tee -a $CURRLOG 2>&1
+
 echo "colo blue" > ~/.vimrc
 git config --global user.name $USERNAME
 git config --global user.email $EMAIL
