@@ -116,7 +116,3 @@ eval $COMMAND |& tee -a $CURRLOG 2>&1
 COMMAND="curl -L https://git.io/get_helm.sh | sudo bash"
 /tmp/log-banner "04f Install helm" "$COMMAND" |& tee -a $CURRLOG 2>&1
 eval $COMMAND |& tee -a $CURRLOG 2>&1
-
-COMMAND="helm init --upgrade"
-/tmp/log-banner "04g Initialize Helm" "$COMMAND" |& tee -a $CURRLOG 2>&1
-eval $COMMAND |& tee -a $CURRLOG 2>&1
