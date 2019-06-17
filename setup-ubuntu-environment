@@ -81,7 +81,11 @@ COMMAND="curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash"
 eval $COMMAND |& tee -a $CURRLOG 2>&1
 
 COMMAND="az extension add --name azure-devops"
-/tmp/log-banner "03b Install the Azure Devops CLI" "$COMMAND" |& tee -a $CURRLOG 2>&1
+/tmp/log-banner "03b Install the Azure Devops CLI Extension" "$COMMAND" |& tee -a $CURRLOG 2>&1
+eval $COMMAND |& tee -a $CURRLOG 2>&1
+
+COMMAND="az extension add --name dev-spaces"
+/tmp/log-banner "03c Install the Azure Dev Spaces CLI Extension" "$COMMAND" |& tee -a $CURRLOG 2>&1
 eval $COMMAND |& tee -a $CURRLOG 2>&1
 
 
