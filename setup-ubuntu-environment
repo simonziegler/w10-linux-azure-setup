@@ -157,5 +157,5 @@ COMMAND="echo 'export PATH=\$PATH:$PWD/apache-tinkerpop-gremlin-console-3.4.3/bi
 eval $COMMAND |& tee -a $CURRLOG 2>&1
 
 COMMAND="echo 'alias grem=\"gremlin.sh\" ' >> .bashrc"
-/tmp/log-banner "05f alias 'gremlin.sh' as 'gc' (note that 'gremlin' is an existing Ubuntu command)" "$COMMAND" |& tee -a $CURRLOG 2>&1
+/tmp/log-banner "05f alias 'gremlin.sh' as 'grem' (note that 'gremlin' is an existing Ubuntu command)" "$COMMAND" |& tee -a $CURRLOG 2>&1
 eval $COMMAND |& tee -a $CURRLOG 2>&1
