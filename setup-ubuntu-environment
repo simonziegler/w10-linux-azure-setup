@@ -152,10 +152,10 @@ COMMAND="unzip -d $PWD $TEMPFILE && rm $TEMPFILE"
 /tmp/log-banner "05e Unzip gremlin console" "$COMMAND" |& tee -a $CURRLOG 2>&1
 eval $COMMAND |& tee -a $CURRLOG 2>&1
 
-COMMAND="echo 'export PATH=$PATH:~/apache-tinkerpop-gremlin-console-3.4.3/bin' >> .bashrc"
+COMMAND="echo 'export PATH=\$PATH:$PWD/apache-tinkerpop-gremlin-console-3.4.3/bin' >> .bashrc"
 /tmp/log-banner "05f Update PATH to reference gremlin console" "$COMMAND" |& tee -a $CURRLOG 2>&1
 eval $COMMAND |& tee -a $CURRLOG 2>&1
 
-COMMAND="echo 'alias gc=gremlin.sh' >> .bashrc"
+COMMAND="echo 'alias grem=\"gremlin.sh\" ' >> .bashrc"
 /tmp/log-banner "05f alias 'gremlin.sh' as 'gc' (note that 'gremlin' is an existing Ubuntu command)" "$COMMAND" |& tee -a $CURRLOG 2>&1
 eval $COMMAND |& tee -a $CURRLOG 2>&1
