@@ -120,3 +120,38 @@ eval $COMMAND |& tee -a $CURRLOG 2>&1
 COMMAND="curl -L https://git.io/get_helm.sh | sudo bash"
 /tmp/log-banner "04f Install helm" "$COMMAND" |& tee -a $CURRLOG 2>&1
 eval $COMMAND |& tee -a $CURRLOG 2>&1
+
+
+#########################################
+#
+# Install java and gremlin, and set PATH
+#
+#########################################
+
+CURRLOG=$LOGS/05-install-java-gremlin
+TEMPFILE=`mktemp`
+PWD=`pwd`
+
+COMMAND="sudo apt install default-jre"
+/tmp/log-banner "05a Install the default JRE" "$COMMAND" |& tee -a $CURRLOG 2>&1
+eval $COMMAND |& tee -a $CURRLOG 2>&1
+
+COMMAND="sudo apt install default-jdk"
+/tmp/log-banner "05b Install the default JDK" "$COMMAND" |& tee -a $CURRLOG 2>&1
+eval $COMMAND |& tee -a $CURRLOG 2>&1
+
+COMMAND="curl -sL http://apache.mirror.anlx.net/tinkerpop/3.4.3/apache-tinkerpop-gremlin-console-3.4.3-bin.zip --output $TEMPFILE"
+/tmp/log-banner "05c Download the gremlin console" "$COMMAND" |& tee -a $CURRLOG 2>&1
+eval $COMMAND |& tee -a $CURRLOG 2>&1
+
+COMMAND="unzip -d $PWD $TEMPFILE && rm $TEMPFILE"
+/tmp/log-banner "05d Unzip gremlin console" "$COMMAND" |& tee -a $CURRLOG 2>&1
+eval $COMMAND |& tee -a $CURRLOG 2>&1
+
+COMMAND="echo 'export PATH=$PATH:~/apache-tinkerpop-gremlin-console-3.4.3/bin' >> .bashrc"
+/tmp/log-banner "05e Update PATH to reference gremlin console" "$COMMAND" |& tee -a $CURRLOG 2>&1
+eval $COMMAND |& tee -a $CURRLOG 2>&1
+
+COMMAND="echo 'alias gc=gremlin.sh' >> .bashrc"
+/tmp/log-banner "05f alias 'gremlin.sh' as 'gc' (note that 'gremlin' is an existing Ubuntu command)" "$COMMAND" |& tee -a $CURRLOG 2>&1
+eval $COMMAND |& tee -a $CURRLOG 2>&1
